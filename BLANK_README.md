@@ -81,6 +81,10 @@
 
 * [![Alpine-Linux][Alpine-Linux]][Alp-url]
 * [![Docker][Docker]][Docker-url]
+* [![JSON][JSON]][JSON-url]
+* [![YAML][YAML]][YAML-url]
+* Nokia SR Linux --> Badge to be created soon
+* Containerlab --> Badge to be created soon 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,32 +98,34 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+On a linux server or linux compatible device you need to install the following:
+
+* Docker
   ```sh
-  npm install npm@latest -g
-  ```
+sudo apt-get update # Debian/Ubuntu based systems
 
-### Installation
+ 
+sudo apt-get install ca-certificates curl gnupg # Prerequisites to allow apt or dnf to work with repos
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/Sh1n0e/Nokia-Homelab.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-5. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin Sh1n0e/Nokia-Homelab
-   git remote -v # confirm the changes
-   ```
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSl https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+      "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update 
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo systemctl enable --now docker # start it up if it doesn't happen automatically'
+ ```
+
+* Containerlab
+ ```sh
+curl -sL https://containerlab.dev/setup | sudo -E bash -s "all"
+ ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -127,8 +133,8 @@ This is an example of how to list things you need to use the software and how to
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
+- [ ] Include how to set up initial topology
+- [ ] Each relevant stage, include configurations and theory to show how they work
 - [ ] Feature 3
     - [ ] Nested Feature
 
@@ -194,3 +200,7 @@ Project Link: [https://github.com/Sh1n0e/Nokia-Homelab](https://github.com/Sh1n0
 [Alp-url]: https://www.alpinelinux.org/
 [Docker]: https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff
 [Docker-url]: https://www.docker.com/
+[JSON]: https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff
+[JSON-url]: https://www.json.org/json-en.html
+[YAML]: https://img.shields.io/badge/YAML-CB171E?logo=yaml&logoColor=fff
+[YAML-url]: https://yaml.org/
