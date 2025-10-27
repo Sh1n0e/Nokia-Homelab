@@ -100,7 +100,7 @@ To get a local copy up and running follow these simple example steps.
 
 On a linux server or linux compatible device you need to install the following:
 
-* Docker
+* Docker - This will host the images for Nokia SR Linux based routers that we will be working on
 ```sh
   sudo apt-get update # Debian/Ubuntu based systems
 
@@ -122,7 +122,7 @@ On a linux server or linux compatible device you need to install the following:
  sudo systemctl enable --now docker # start it up if it doesn't happen automatically'
 ```
 
-  * Containerlab
+  * Containerlab - What will be acting sort of like the main emulating "device" that recreates the topology that we will be making
  ```sh
  curl -sL https://containerlab.dev/setup | sudo -E bash -s "all"
  ```
@@ -135,8 +135,8 @@ On a linux server or linux compatible device you need to install the following:
 
 - [ ] Include how to set up initial topology
 - [ ] Each relevant stage, include configurations and theory to show how they work
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] For each section, include detailed breakdowns of how the command works (A little more in depth explanation than step 2)
+
 
 See the [open issues](https://github.com/Sh1n0e/Nokia-Homelab/issues) for a full list of proposed features (and known issues).
 
@@ -148,7 +148,7 @@ See the [open issues](https://github.com/Sh1n0e/Nokia-Homelab/issues) for a full
 Shawn Rae - Email - shawndlopezrae@gmail.com
 LinkedIn - [![LinkedIn][linkedin-shield]][linkedin-url]
 
-Project Link: [https://github.com/Sh1n0e/Nokia-Homelab](https://github.com/Sh1n0e/Nokia-Homelab)
+Project Link: [https://github.com/Sh1n0e/Nokia-Homelab](https://github.com/Sh1n0e/Nokia-Homelab/Home-Lab)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
