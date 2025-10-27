@@ -145,7 +145,8 @@ See the [open issues](https://github.com/Sh1n0e/Nokia-Homelab/issues) for a full
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - shawndlopezrae@gmail.com
+Shawn Rae - Email - shawndlopezrae@gmail.com
+LinkedIn - [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Project Link: [https://github.com/Sh1n0e/Nokia-Homelab](https://github.com/Sh1n0e/Nokia-Homelab)
 
