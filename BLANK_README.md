@@ -101,7 +101,7 @@ To get a local copy up and running follow these simple example steps.
 On a linux server or linux compatible device you need to install the following:
 
 * Docker
-  ```sh
+```sh
     sudo apt-get update # Debian/Ubuntu based systems
 
  
@@ -120,9 +120,9 @@ On a linux server or linux compatible device you need to install the following:
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
     sudo systemctl enable --now docker # start it up if it doesn't happen automatically'
- ```
+```
 
-* Containerlab
+  * Containerlab
  ```sh
  curl -sL https://containerlab.dev/setup | sudo -E bash -s "all"
  ```
