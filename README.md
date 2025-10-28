@@ -115,9 +115,6 @@ On a linux server or linux compatible device you need to install the following:
 - [ ] Each relevant stage, include configurations and theory to show how they work
 - [ ] For each section, include detailed breakdowns of how the command works (A little more in depth explanation than step 2)
 
-
-See the [open issues](https://github.com/Sh1n0e/Nokia-Homelab/issues) for a full list of proposed features (and known issues).
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
