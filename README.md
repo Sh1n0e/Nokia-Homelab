@@ -36,15 +36,6 @@
 
   <p align="center">
     This repo is dedicated to me recreating the lab topology we got to configure throughout our time learning for the Data Center Fabric Fundamentals Certification with Nokia
-    <br />
-    <a href="https://github.com/Sh1n0e/Nokia-Homelab"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/Sh1n0e/Nokia-Homelab">View Demo</a>
-    &middot;
-    <a href="https://github.com/Sh1n0e/Nokia-Homelab/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/Sh1n0e/Nokia-Homelab/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
