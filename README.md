@@ -135,9 +135,9 @@ Project Link: [https://github.com/Sh1n0e/Nokia-Homelab](https://github.com/Sh1n0
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Eric Brestenbach](https://www.linkedin.com/in/eric-brestenbach-55511a1/)- For teaching the material that provided the knowledge I needed to be able to perform what is required for this writeup over the reading week of October 2025 
+* [Max W.](https://www.linkedin.com/in/jitengwangmax/)- For providing further assistance in understanding the material from the course and in my recreation of the topology 
+* [Michael Anderson](https://www.linkedin.com/in/professor-michael-anderson/) - For being able to organize the opportunity to learn directly from Nokia Employees about Data Centre Fundamentals over the reading week from October 21st to 24th, 2025
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
