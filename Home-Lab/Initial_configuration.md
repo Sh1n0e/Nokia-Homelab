@@ -2,7 +2,7 @@
 
 After creating our topology with the YAML file, we will have the following configuration below:
 
-[!Topology](images/topology.png)
+![Topology](images/topology.png)
 
 This is just the barebones topology with only the management interfaces automatically configured thanks to containerlab.
 
