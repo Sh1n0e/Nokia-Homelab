@@ -10,13 +10,17 @@ This is just the barebones topology with only the management interfaces automati
 
 Our goal here is to create a fully configured leaf and spine topology with 2 spine and 2 leaf devices that interconnect 3 hosts with BGP as our main routing protocol to create our routes.
 
-We will begin by configuring everything from the 2 spines, down to the 2 leaves, then on to all of the hosts.
+To make life easier, in the folder start_config, I left starting configurations in json files for the switches and scripts to run for the hosts that you can copy paste as needed.
 
-# Spine Configuration:
+For the switches, go into the /etc/opt/srlinux/config.json and replace what is in there with the starting configurations 
 
-On both spines, we need to configure the interfaces that point towards the leaves as well as their loopback addresses that will also represent the router-id for BGP peering.
+For the hosts, they will be bash scripts that you can make executable then run.
 
-```json
+## Configuring Interfaces 
+
+For this initial configuration we will configure the interfaces that point towards both the hosts and the spine switches to establish connectivity from hosts to spines.
+
+```
 --{ running }--[  ]--
 A:root@spine1# enter candidate
 

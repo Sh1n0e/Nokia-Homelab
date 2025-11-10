@@ -1,0 +1,442 @@
+{
+  "srl_nokia-network-instance:network-instance": [
+    {
+      "name": "default",
+      "type": "srl_nokia-network-instance:default",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "ethernet-1/1.0"
+        },
+        {
+          "name": "ethernet-1/2.0"
+        },
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "srl_nokia-linux:linux": {
+          "export-routes": true,
+          "export-neighbors": true
+        },
+        "srl_nokia-bgp:bgp": {
+          "autonomous-system": 64999,
+          "router-id": "100.0.1.2",
+          "ebgp-default-policy": {
+            "import-reject-all": false,
+            "export-reject-all": true
+          },
+          "afi-safi": [
+            {
+              "afi-safi-name": "srl_nokia-common:ipv4-unicast",
+              "admin-state": "enable",
+              "multipath": {
+                "allow-multiple-as": true
+              }
+            }
+          ],
+          "group": [
+            {
+              "group-name": "leaf",
+              "admin-state": "enable"
+            }
+          ],
+          "neighbor": [
+            {
+              "peer-address": "10.2.1.1",
+              "description": "default network-instance bgp neighbor to Leaf-1",
+              "peer-as": 65001,
+              "peer-group": "leaf",
+              "export-policy": [
+                "bgp-export-policy"
+              ]
+            },
+            {
+              "peer-address": "10.2.2.1",
+              "description": "default network-instance bgp neighbor to Leaf-2",
+              "peer-as": 65002,
+              "peer-group": "leaf",
+              "export-policy": [
+                "bgp-export-policy"
+              ]
+            }
+          ]
+        }
+      },
+      "srl_nokia-static-routes:static-routes": {
+        
+      },
+      "srl_nokia-next-hop-groups:next-hop-groups": {
+        
+      }
+    },
+    {
+      "name": "mgmt",
+      "type": "srl_nokia-network-instance:ip-vrf",
+      "admin-state": "enable",
+      "description": "Management network instance",
+      "interface": [
+        {
+          "name": "mgmt0.0"
+        }
+      ],
+      "protocols": {
+        "srl_nokia-linux:linux": {
+          "export-routes": true,
+          "export-neighbors": true
+        }
+      }
+    }
+  ],
+  "srl_nokia-interfaces:interface": [
+    {
+      "name": "ethernet-1/1",
+      "admin-state": "enable",
+      "subinterface": [
+        {
+          "index": 0,
+          "admin-state": "enable",
+          "ipv4": {
+            "admin-state": "enable",
+            "address": [
+              {
+                "ip-prefix": "10.2.1.0/31"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ethernet-1/2",
+      "admin-state": "enable",
+      "subinterface": [
+        {
+          "index": 0,
+          "admin-state": "enable",
+          "ipv4": {
+            "admin-state": "enable",
+            "address": [
+              {
+                "ip-prefix": "10.2.2.0/31"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "lo0",
+      "admin-state": "enable",
+      "subinterface": [
+        {
+          "index": 0,
+          "admin-state": "enable",
+          "ipv4": {
+            "admin-state": "enable",
+            "address": [
+              {
+                "ip-prefix": "100.0.1.2/32"
+              }
+            ]
+          },
+          "ipv6": {
+            "admin-state": "enable",
+            "address": [
+              {
+                "ip-prefix": "2001::100:0:1:2/128"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "mgmt0",
+      "admin-state": "enable",
+      "mtu": 1500,
+      "subinterface": [
+        {
+          "index": 0,
+          "admin-state": "enable",
+          "ipv4": {
+            "admin-state": "enable",
+            "srl_nokia-interfaces-ip-dhcp:dhcp-client": {
+              
+            }
+          },
+          "ipv6": {
+            "admin-state": "enable",
+            "srl_nokia-interfaces-ip-dhcp:dhcp-client": {
+              
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "srl_nokia-system:system": {
+    "srl_nokia-tls:tls": {
+      "server-profile": [
+        {
+          "name": "tls-profile-1",
+          "key": "$aes1$ATeWpu2qdW+D6W8=$bkKQh0EZStVLvfkPFY6nKQ==",
+          "certificate": "replace-me",
+          "authenticate-client": false
+        }
+      ]
+    },
+    "srl_nokia-ssh:ssh-server": [
+      {
+        "name": "default",
+        "admin-state": "enable",
+        "network-instance": "default"
+      },
+      {
+        "name": "mgmt",
+        "admin-state": "enable",
+        "network-instance": "mgmt",
+        "use-credentialz": true
+      }
+    ],
+    "srl_nokia-lldp:lldp": {
+      "admin-state": "enable",
+      "hello-timer": "30",
+      "management-address": [
+        {
+          "subinterface": "mgmt0.0",
+          "type": [
+            "IPv4"
+          ]
+        }
+      ],
+      "interface": [
+        {
+          "name": "mgmt0",
+          "admin-state": "disable"
+        }
+      ]
+    },
+    "srl_nokia-logging:logging": {
+      "buffer": [
+        {
+          "buffer-name": "messages",
+          "rotate": 3,
+          "size": "10000000",
+          "facility": [
+            {
+              "facility-name": "local6",
+              "priority": {
+                "match-above": "informational"
+              }
+            }
+          ]
+        },
+        {
+          "buffer-name": "system",
+          "facility": [
+            {
+              "facility-name": "auth",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "cron",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "daemon",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "ftp",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "kern",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "lpr",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "mail",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "news",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "syslog",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "user",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "uucp",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "local0",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "local1",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "local2",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "local3",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "local4",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "local5",
+              "priority": {
+                "match-above": "warning"
+              }
+            },
+            {
+              "facility-name": "local7",
+              "priority": {
+                "match-above": "warning"
+              }
+            }
+          ]
+        }
+      ],
+      "file": [
+        {
+          "file-name": "messages",
+          "rotate": 3,
+          "size": "10000000",
+          "facility": [
+            {
+              "facility-name": "local6",
+              "priority": {
+                "match-above": "warning"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "srl_nokia-aaa:aaa": {
+      "authentication": {
+        "authentication-method": [
+          "local"
+        ],
+        "linuxadmin-user": {
+          "password": "$6$D.Ow5ZfE4Dxk1kX$2ZWI4CPp22cMrPR1FBD36lQz/0BNa9qm84TbpQr.Nybx2A8ojxGTQQKnDnOZTN6xg4z8DywkqKC.9gykQ464Y."
+        }
+      },
+      "accounting": {
+        "event": [
+          {
+            "event-type": "srl_nokia-aaa-types:command",
+            "record": "srl_nokia-aaa-types:start-stop"
+          }
+        ]
+      },
+      "server-group": [
+        {
+          "name": "local",
+          "type": "srl_nokia-aaa-types:local"
+        }
+      ]
+    },
+    "srl_nokia-grpc:grpc-server": [
+      {
+        "name": "mgmt",
+        "timeout": 7200,
+        "rate-limit": 60,
+        "session-limit": 20,
+        "tls-profile": "tls-profile-1",
+        "network-instance": "mgmt",
+        "port": 50052,
+        "services": [
+          "srl_nokia-grpc:gnmi",
+          "srl_nokia-grpc:gnoi"
+        ]
+      }
+    ],
+    "srl_nokia-json-rpc:json-rpc-server": {
+      "admin-state": "enable",
+      "network-instance": [
+        {
+          "name": "mgmt",
+          "http": {
+            "admin-state": "enable",
+            "use-authentication": true,
+            "session-limit": 1,
+            "port": 4000
+          },
+          "https": {
+            "admin-state": "enable",
+            "use-authentication": true,
+            "session-limit": 1,
+            "port": 443,
+            "tls-profile": "tls-profile-1"
+          }
+        }
+      ]
+    }
+  },
+  "srl_nokia-routing-policy:routing-policy": {
+    "policy": [
+      {
+        "name": "bgp-export-policy",
+        "statement": [
+          {
+            "name": "999",
+            "action": {
+              "policy-result": "accept"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
