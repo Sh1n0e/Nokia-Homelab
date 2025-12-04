@@ -115,4 +115,4 @@ Once the interfaces have been configured do the following:
 
 Then after running the ```show system lldp neighbor``` command, we can confirm that each leaf router has been successfully connected to both spines via interfaces ethernet-1/1 and 1/2.
 
-While we have a successful connection between the devices as seen through system lldp, we will not be able to ping because we haven't attached these interfaces into a network-instance yet so there won't be any routing.
+While we have a successful connection between the devices as seen through system lldp, we will not be able to ping with the ```ping 10.2.1.0 network-instance default (assuming you are on leaf1)``` command because we haven't attached these interfaces into a network-instance yet so there won't be any routing (These are mandatory on any given Nokia routing device.
